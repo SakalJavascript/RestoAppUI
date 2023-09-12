@@ -1,0 +1,65 @@
+<div *ngIf="TableId && TableId!==0" class="p-2">
+    <a  class="link" [routerLink]="['/tables']" > << Back</a>
+    <div class="float-end">
+        <b class="ps-3">Table ID:</b> {{TableId}}
+        <b class="ps-3">Table:</b> {{TableName}}
+    </div>
+</div>
+<div class="split-container p-2">   
+    <div class="split-section">
+        <div class="row">
+            <div class="col">
+                <div class="button-grid">
+                    <button *ngFor="let menuCat of menuCatList" class="button" (click)="CatClick(menuCat.ID!)">
+                        {{menuCat.Name}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 menus">
+            <div class="col">
+                <div class="button-grid">
+                    <button *ngFor="let menu of menuList" class="button" (click)="MenuClick(menu)">
+                        {{menu.MenuName}}
+                    </button>                    
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="split-section">
+        <div class="row">           
+            <table class="table table-hover" >
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of itemList">
+                        <td (dblclick)="remove(item.MenuID)" >{{item.MenuName}}</td>
+                        <td>{{item.Price}}</td>
+                        <td>
+                            <button class="quantity-btn" [disabled]="item.Quantity==0" (click)="item.Quantity=item.Quantity-1; MakeGrandTotal()">-</button>
+                                <span class="p-2" >{{item.Quantity}}</span>
+                            <button  (click)="item.Quantity=item.Quantity+1; MakeGrandTotal()" class="quantity-btn">+</button></td>
+                        <td>{{(item.Price * item.Quantity).toFixed(2)}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><b>{{grandTotal.toFixed(2)}}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">  
+            <div class="col">  <button class="btn btn-success form-control" (click)="Submit()">Save</button></div>          
+            <div class="col"> <button class="btn btn-light form-control" (click)="Reset()">Reset</button>  </div> 
+        </div>
+        <div *ngIf="isSubmitClicked && itemList.length==0" class="alert alert-danger mt-2">Please add atleast one item</div>
+    </div>
+</div>

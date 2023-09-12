@@ -1,0 +1,23 @@
+<div [ngClass]="{'invoice mt-5':OrderId===0, 'border border-dark p-1':OrderId!==0}">
+    <div *ngIf="OrderId==0" class="header">
+        <h4>Restaurant Invoice</h4>
+        <p>Date: {{order?.OrderDate | date:'dd/MM/yyyy'}}</p>
+    </div>
+    <div class="items" >        
+        <div class="item item-header">
+            <span class="item-cell" style="flex: 4;">Item</span>
+            <span class="item-cell" style="flex: 1;">Price (₹)</span>
+            <span class="item-cell" style="flex: 1;">Quantity</span>
+            <span class="item-cell" style="flex: 1;">Total (₹)</span>
+        </div>        
+        <div *ngFor="let item of order?.KitchenOrders;" class="item">
+            <span class="item-cell" style="flex: 4;">{{item.MenuName}}</span>
+            <span class="item-cell" style="flex: 1;">{{item.Price}}</span>
+            <span class="item-cell" style="flex: 1;">{{item.Quantity}}</span>
+            <span class="item-cell" style="flex: 1;">{{item.Total}}</span>
+        </div>        
+    </div>
+    <div class="total">
+        <p>Total: ₹{{order?.TotalAmount}}</p>
+    </div>
+</div>

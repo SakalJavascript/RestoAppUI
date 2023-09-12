@@ -1,0 +1,8 @@
+<div *ngFor="let item of Errors | keyvalue">   
+    <div *ngIf="+item.key=== validationType.DataNotFound" class="alert alert-info">
+        {{item.value}}
+    </div>
+    <div *ngIf="+item.key===+validationType.Exception" class="alert alert-danger">
+        {{ item.value}} 
+    </div>
+</div>

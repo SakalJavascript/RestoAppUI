@@ -1,0 +1,26 @@
+<div class="mt-4">
+<form [formGroup]="form">
+    <div class="mb-3">
+      <label for="name" class="form-label"><span class="text-danger">*</span>Name</label>
+      <input type="text" class="form-control" formControlName="Name" id="Name" name="Name" >
+      <span class="text-danger" *ngIf="form.get('Name')?.touched && form.get('Name')?.invalid">Please Enter Category Name</span>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" formControlName="Description" name="Description"></textarea>
+    </div>
+    <button type="submit" [disabled]="form.invalid" class="btn" [ngClass]="{'btn-primary':form.get('ID')?.value!==null,'btn-success':form.get('ID')?.value==null}"  (click)="Submit()" >
+      {{form.get('ID')?.value!==null?'Update':'Save'}}
+    </button>
+
+    <button  class="btn btn-default" (click)="close()" >
+      Reset
+    </button>
+    <div *ngIf="IsErrors">
+      <app-show-error-message [Errors]="Errors"></app-show-error-message>
+      <button class="btn btn-close float-end" (click)="close()"></button>
+    </div>
+    <app-menu-category-grid (SetError)="SetError($event)" [menuCategories]="menuCategories"  (onEdit)="edit($event)" (onDelete)="onLoad()" ></app-menu-category-grid>
+  </form>
+</div>
+  
