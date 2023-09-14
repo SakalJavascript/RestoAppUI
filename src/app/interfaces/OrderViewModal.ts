@@ -1,5 +1,5 @@
 export interface KitchenOrderDetailViewModal {
-    KitchenOrdersId: number;
+    KitchenOrdersId: string;
     MenuName: string;
     Quantity: number;
     Price: number;

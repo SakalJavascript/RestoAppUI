@@ -1,9 +1,16 @@
-<div *ngIf="TableId && TableId!==0" class="p-2">
-    <a  class="link" [routerLink]="['/tables']" > << Back</a>
-    <div class="float-end">
-        <b class="ps-3">Table ID:</b> {{TableId}}
-        <b class="ps-3">Table:</b> {{TableName}}
+<div *ngIf="TableId && TableId!==0" class="p-2 row">
+    <div class="col-md-2">
+        <a  class="link" [routerLink]="['/tables']" > << Back</a>
     </div>
+    <div class="col-md-7">
+        
+    </div>
+    <div class="col-md-3">
+        <b >Table:</b> {{TableName}}  
+        <a class="btn btn-sm btn-light me-2" [routerLink]="['/tables','change-table',TableId,currentOrderId]" >Change Table</a>
+    </div>
+    
+  
 </div>
 <div class="split-container p-2">   
     <div class="split-section">
