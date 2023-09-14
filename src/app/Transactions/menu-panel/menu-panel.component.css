@@ -14,11 +14,13 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    /* font-weight: bold; */
 }
 .menus .button
 {
-    background-color: #ffc107;
-    color:black;
+    background-color: #b007ff;
+    color:white;
+    /* font-weight: bold; */
 }
 .button:hover {
     background-color: #0056b3;

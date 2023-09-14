@@ -15,6 +15,7 @@ const routes: Routes = [
   { path:'transaction/all-bill' , component: AllBillsComponent},
   { path:'transaction/menu-panel/:tableId/:TableName/:orderId' , component: MenuPanelComponent},
   { path:'tables' ,component: TableGridComponent },
+  { path:'tables/change-table/:tableId/:currentOrderId' ,component: TableGridComponent },
   
   
 ];
