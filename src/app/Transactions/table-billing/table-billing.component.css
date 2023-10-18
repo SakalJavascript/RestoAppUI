@@ -1,0 +1,68 @@
+.form-check-input-lg {
+    height: 1rem;
+    width: 1rem;
+  }
+
+.form-check-label
+{
+    font-size: 1rem;    
+    margin-top: .1rem;
+}
+
+
+
+.table-container {
+    height: 400px; /* Set the maximum height for the table body */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+ /* Thin scrollbar styles */
+ .table-container::-webkit-scrollbar {
+    width: 1px; /* Set the width of the scrollbar */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 3px; /* Round the corners of the thumb */
+}
+
+.table-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
+  /* Custom CSS for scrollbar width */
+  ::-webkit-scrollbar {
+    width: 1px; /* Adjust the width as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Custom CSS to split the page vertically */
+.split-container {
+    display: flex;
+    height:90vh; /* 100% of viewport height */
+}
+
+.split-section-left {
+    flex: 29%;
+    overflow-y: auto;
+    border-right: 1px solid #ccc; /* Vertical divider */
+}
+
+.split-section-right {
+    flex: 70%;
+    overflow-y: auto;
+}

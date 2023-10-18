@@ -15,3 +15,8 @@ export interface OrderViewModal {
     IsPaid: boolean | null;
     KitchenOrders: KitchenOrderDetailViewModal[];
 }
+
+export interface KichenOrderViewModal {
+    MenuName:string,
+    Quantity:number
+}

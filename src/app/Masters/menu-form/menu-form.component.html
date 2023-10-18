@@ -1,0 +1,58 @@
+<div class="container mt-2">
+    <h1 class="text-center">Menu Master</h1>
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col-md-3"> 
+                <label for="img" class="form-label"><span class="text-danger">*</span>Upload Image</label>
+                <div class="position-relative">
+                    <img [src]="imageUrl || '/assets/blank-User.png'" class="img-fluid square-image" alt="Preview">
+                    <div class="upload-overlay d-flex justify-content-center align-items-center">
+                    <label for="fileInput" class="btn btn-primary">
+                        <i class="bi bi-cloud-upload"></i> Upload
+                        <input type="file" id="fileInput" (change)="onFileSelected($event)" class="d-none">
+                    </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="menuCat" class="form-label"><span class="text-danger">*</span>Menu Category</label>
+                    <select formControlName="CategoryID" name="menuCat" class="form-control">
+                        <option value="-1">---Select---</option>
+                        <option *ngFor="let cat of ($menuCatageries | async)?.Data" [value]="cat.ID">{{cat.Name}}</option>
+                    </select>
+                    
+                    <span class="text-danger" *ngIf="form.get('CategoryID')?.touched && form.get('CategoryID')?.value==-1">Please Selet Menu Category</span> 
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label"><span class="text-danger">*</span>Name</label>
+                    <input type="text" class="form-control" formControlName="MenuName" id="Name" name="Name" >
+                     <span class="text-danger" *ngIf="form.get('MenuName')?.touched && form.get('MenuName')?.invalid">Please Enter Menu Name</span> 
+                </div>
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label"><span class="text-danger">*</span>Price</label>
+                    <input type="text" class="form-control" formControlName="Price" id="Price" name="Price" >
+                    <span class="text-danger" *ngIf="form.get('Price')?.touched && form.get('Price')?.invalid">
+                        <span *ngIf="form.get('Price')?.hasError('required')"> Please Enter Price</span>
+                        <span *ngIf="form.get('Price')?.hasError('pattern')"> Please Enter Number</span>
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" formControlName="Description" name="Description"></textarea>
+                </div>                
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <button class="btn btn-success form-control" [disabled]="!form.valid"  (click)="Save()">Save</button>
+                
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-default form-control"   (click)="form.reset()">Reset</button>
+            </div>
+        </div>
+    </form>
+  </div>

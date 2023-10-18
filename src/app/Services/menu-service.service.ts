@@ -22,7 +22,12 @@ export class MenuService {
 
  SaveOrder( order:Order)
  {  
-  return this.httpClient.post(`${this.BASE_URL}Menu`, order);
+  return this.httpClient.post(`${this.BASE_URL}Menu/SaveOrder`, order);
+ }
+
+ Save( menu:Menu)
+ {  
+  return this.httpClient.post<string>(`${this.BASE_URL}Menu`, menu);
  }
 
 }

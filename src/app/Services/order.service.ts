@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OrderViewModal } from '../interfaces/OrderViewModal';
+import { KichenOrderViewModal, KitchenOrderDetailViewModal, OrderViewModal } from '../interfaces/OrderViewModal';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +22,18 @@ export class OrderService {
     
     return this.httpClient.get<OrderViewModal[]>(`${this.BASE_URL}Order`)
   }
+
+  getAllOrdersByTables(tableIds:string)
+  {    
+    return this.httpClient.get<KitchenOrderDetailViewModal[]>(`${this.BASE_URL}Order/table-bills/${tableIds}`)
+  }
+  SaveTableBilling(tableIds:string)
+  {    
+    return this.httpClient.post(`${this.BASE_URL}Order/table-bills/${tableIds}`,tableIds)
+  }
+  getKitchenOrdersById(orderId:number)
+  {    
+    return this.httpClient.get<KichenOrderViewModal[]>(`${this.BASE_URL}Order/kitchen/${orderId}`)
+  }
+  
 }

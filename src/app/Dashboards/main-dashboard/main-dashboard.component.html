@@ -1,0 +1,85 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <mat-form-field>
+            <input
+                matInput
+                [(ngModel)]="selectedStartDate"
+                [matDatepicker]="pickerStartDate"
+                placeholder="Select Start Date"
+                (dateInput)="dateStartChanged($event)"
+            />
+            <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStartDate></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field>
+                <input
+                matInput
+                [(ngModel)]="selectedEndDate"
+                [matDatepicker]="picker"
+                placeholder="Select End Date"
+                (dateInput)="dateEndChanged($event)"
+                />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="widget">
+                <h5>Revenue</h5>
+                <p>Total revenue for the month</p>
+                <h2>$5,000</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget">
+                <h5>Sales</h5>
+                <p>Total sales for the month</p>
+                <h2>500</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+           <div class="widget p-0">
+            <table class="table table-light m-0">
+                  <tbody>
+                      <tr  *ngFor="let item of $OrderTypeWiseCount | async; let last=last;">
+                          <td>{{item.OrderType}}</td>
+                          <td><span [ngClass]="{'bg-primary':!last,'bg-danger':last}" class="badge rounded-pill">{{item.Count}}</span></td>
+                          
+                      </tr>
+                  </tbody>
+            </table>
+              
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="widget">
+                <h5>Monthly Sales Chart</h5>
+                <div class="chart-container">
+                    <!-- Add your chart here (e.g., using Chart.js) -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="widget p-0">
+              <table class="table table-light m-0">
+                    <tbody>
+                        <tr *ngFor="let item of $CatWiseTotal | async; let last = last">
+                            <td>{{item.MenuCatName}}</td>
+                            <td> <span  [ngClass]="{'bg-danger badge rounded-pill fs-6':last}" >₹ {{item.Total | number: '1.0-0'}}</span> </td>
+                            
+                        </tr>
+                    </tbody>
+              </table>
+                
+            </div>
+        </div>
+    </div>
+</div>

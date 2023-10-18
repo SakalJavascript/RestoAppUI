@@ -1,0 +1,71 @@
+<div class="container-fluid mt-2">
+    <div class="row split-container">
+        <div class="col split-section-left">
+            <div  class="row row-cols-5 row-cols-md-3 g-2">
+                <div *ngFor="let table of occupidTables" class="form-check-inline col">
+                    <input  class="form-check-input form-check-input-lg" [(ngModel)]="table.IsChecked" (change)="onCheck()" type="checkbox" [value]="table.ID">
+                    <label class="form-check-label ms-2" for="checkbox1">{{table.Description}}</label>    
+                </div>
+        </div>
+        </div>
+        <div class="col split-section-right">
+            <div class="row" >
+                <div class="col">
+        
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-warning">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 50%;">Menu Name</th>
+                                        <th style="width: 10%;">Quantity</th>
+                                        <th style="width: 20%;">Price (₹)</th>
+                                        <th style="width: 20%;">Total (₹)</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-container">
+                                <table class="table table-primary">
+                                    <tbody>
+                                        <tr *ngFor="let order of orderByTable ">
+                                            <td style="width: 50%;" >{{ order.MenuName }}</td>
+                                            <td style="width: 10%;">{{ order.Quantity }}</td>
+                                            <td style="width: 20%;">{{ order.Price }}</td>
+                                            <td style="width: 20%;">{{ order.Total }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-danger">
+                                <tfoot>
+                                    <tr>
+                                        <th style="width: 50%;"></th>
+                                        <th style="width: 10%;">{{calculateQuntity()}}</th>
+                                        <th style="width: 20%;"></th>
+                                        <th style="width: 20%;">₹{{calculateTotalPrice()}}</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn  btn-success  form-control" (click)="print()">Save+Print</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-light form-control" (click)="Reset()">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
