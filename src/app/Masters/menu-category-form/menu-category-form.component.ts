@@ -39,7 +39,7 @@ export class MenuCategoryFormComponent implements OnInit {
       this.onLoad();
       this.form.reset();
     },
-    error:(error)=>{     
+    error:(error)=>{         
       this.IsErrors=true
     }})
   }

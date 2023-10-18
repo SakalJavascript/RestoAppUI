@@ -6,7 +6,7 @@ export interface Order
     OrderID: number,
     TotalAmount: number,
     OrderType: number,
-    OrderDetails: KitchenOrderDetail[]
+    OrderDetails: KitchenOrderDetail[] | undefined
 }
 
 

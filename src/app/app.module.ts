@@ -12,8 +12,16 @@ import { MenuPanelComponent } from './transactions/menu-panel/menu-panel.compone
 import { FinalBillComponent } from './prints/final-bill/final-bill.component';
 import { ShowErrorMessageComponent } from './common/show-error-message/show-error-message.component';
 import { AllBillsComponent } from './Transactions/all-bills/all-bills.component';
-
-
+import { TableBillingComponent } from './Transactions/table-billing/table-billing.component';
+import { KitchenOrderComponent } from './Prints/kitchen-order/kitchen-order.component';
+import { MainDashboardComponent } from './Dashboards/main-dashboard/main-dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field'; // Import this module
+import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
+import { CommonModule, DatePipe } from '@angular/common';
+import { MenuFormComponent } from './Masters/menu-form/menu-form.component';
 
 
 @NgModule({
@@ -25,7 +33,12 @@ import { AllBillsComponent } from './Transactions/all-bills/all-bills.component'
     MenuPanelComponent,
     FinalBillComponent,
     ShowErrorMessageComponent,
-    AllBillsComponent,  
+    AllBillsComponent,
+    TableBillingComponent,
+    KitchenOrderComponent,
+    MainDashboardComponent,
+    MenuFormComponent,
+       
     
   ],
   imports: [
@@ -34,10 +47,17 @@ import { AllBillsComponent } from './Transactions/all-bills/all-bills.component'
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    FormsModule,  
-   
+    FormsModule,
+    BrowserAnimationsModule,  
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    CommonModule,
+    
   ],
-  providers: [],
+  providers: [   DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

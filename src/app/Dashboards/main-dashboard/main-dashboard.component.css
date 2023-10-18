@@ -1,0 +1,11 @@
+.widget {
+    background-color: #f1f0f0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.chart-container {
+    height: 200px;
+}

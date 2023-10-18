@@ -5,6 +5,7 @@ export interface Table {
     Capacity: number;
     IsOccupied: boolean;
     TotalAmount:number;
-    CurrentOrderId:number
+    CurrentOrderId:number;
+    IsChecked:boolean;
   }
   

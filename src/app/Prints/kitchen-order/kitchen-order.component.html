@@ -1,0 +1,16 @@
+<div class="invoice mt-5">
+    <div  class="header">
+        <h4>Kichen Order</h4>       
+    </div>
+    <div  class="items" >        
+        <div class="item item-header">
+            <span class="item-cell" style="flex: 4;">Item</span>            
+            <span class="item-cell" style="flex: 1;">Quantity</span>            
+        </div>
+          <div  *ngFor="let order of $orders | async " class="item">
+              <span class="item-cell" style="flex: 4;">{{order.MenuName}}</span>              
+              <span class="item-cell" style="flex: 1;">{{order.Quantity}}</span>              
+          </div> 
+    </div>
+</div>
+

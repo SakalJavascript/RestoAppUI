@@ -81,15 +81,10 @@ export class MenuPanelComponent implements OnInit {
       OrderType: this.TableId!=0? 1:2,
       OrderDetails: this.itemList
     }
-    console.log(order )
-
     this.menuSevice.SaveOrder(order).subscribe((data)=>
       {
-        this.Reset();
-        
-        const urlTree=this.router.createUrlTree(["print","final-bill",data]);
-        const url = this.router.serializeUrl(urlTree);
-        window.open(url, '_blank');
+        this.Reset();                
+        this.router.navigate(["print",this.TableId!=0? "kitchen-order": "final-bill",data]);   
         
       }
       );
