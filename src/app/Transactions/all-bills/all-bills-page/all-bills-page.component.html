@@ -1,0 +1,27 @@
+<table class="table table-bordered ">
+  <thead>
+    <tr>
+      <th style="width: 10%" >Order Num</th>          
+      <th>Order Date</th>
+      <th>Order Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let order of  $orders| async; let i = index">
+        <tr (click)="toggleDetails(i)">
+          <td>{{order.OrderId }}</td>
+          <td>{{ order.OrderDate | date:'dd-MMM-yyyy'}}</td>
+          <td>{{ order.OrderType==1?'Table Billing':'Fast Billing' }}</td>
+        </tr>
+        <tr *ngIf="isRowExpanded(i)">
+          <td colspan="3">   
+                <app-final-bill [OrderId]="order.OrderId"></app-final-bill>
+          </td>
+        </tr>
+    </ng-container>
+  </tbody>
+</table>
+<app-modal modalTitle="Bill Details" (saveModal)="SaveModal()" >
+  <h1>my body</h1>
+</app-modal>
+    

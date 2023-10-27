@@ -17,10 +17,10 @@ export class OrderService {
     
     return this.httpClient.get<OrderViewModal>(`${this.BASE_URL}Order/${orderId}`)
   }
-  getAllOrder()
+  getAllOrder(pageIndex:number,pageNumber:number)
   {
     
-    return this.httpClient.get<OrderViewModal[]>(`${this.BASE_URL}Order`)
+    return this.httpClient.get<OrderViewModal[]>(`${this.BASE_URL}Order/${pageIndex}/${pageNumber}`)
   }
 
   getAllOrdersByTables(tableIds:string)
@@ -34,6 +34,11 @@ export class OrderService {
   getKitchenOrdersById(orderId:number)
   {    
     return this.httpClient.get<KichenOrderViewModal[]>(`${this.BASE_URL}Order/kitchen/${orderId}`)
+  }
+
+  getAllOrderCount()
+  {
+    return this.httpClient.get<number>(`${this.BASE_URL}Order/count`);
   }
   
 }
