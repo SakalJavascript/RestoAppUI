@@ -9,6 +9,7 @@ import { TableBillingComponent } from './Transactions/table-billing/table-billin
 import { KitchenOrderComponent } from './Prints/kitchen-order/kitchen-order.component';
 import { MainDashboardComponent } from './Dashboards/main-dashboard/main-dashboard.component';
 import { MenuFormComponent } from './Masters/menu-form/menu-form.component';
+import { AllBillsPageComponent } from './Transactions/all-bills/all-bills-page/all-bills-page.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,12 @@ const routes: Routes = [
   { path:'transaction/menu-panel' , component: MenuPanelComponent},
   { path:'print/final-bill/:id' , component: FinalBillComponent},
   { path:'print/kitchen-order/:orderId' , component: KitchenOrderComponent},  
-  { path:'transaction/all-bill' , component: AllBillsComponent},
+  {   path:'transaction/all-bill' , 
+      component: AllBillsComponent,
+      children:[
+                {path:':page-index/:page-size',  component: AllBillsPageComponent   }
+               ]
+  },
   { path:'transaction/menu-panel/:tableId/:TableName/:orderId' , component: MenuPanelComponent},
   { path:'tables' ,component: TableGridComponent },
   { path:'tables/change-table/:tableId/:currentOrderId' ,component: TableGridComponent },
