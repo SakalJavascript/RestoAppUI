@@ -1,0 +1,39 @@
+.login-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .login-form {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top:5rem;
+  }
+
+  .login-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .login-logo img {
+    width: 300px;
+    height: 100px;
+  margin:auto;
+  }
+
+ 
+
+  .login-input {
+    margin-bottom: 10px;
+  }
+
+  .login-button {
+    background-color: #f57224;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+    padding: 10px;
+  }

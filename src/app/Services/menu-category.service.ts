@@ -1,7 +1,7 @@
  import { Injectable } from '@angular/core';
 import {MenuCategory} from 'src/app/interfaces/MenuCategory'
 import {HttpClient} from '@angular/common/http'
- import {EMPTY, Subject, catchError, observable, of, tap} from 'rxjs'
+ import {EMPTY, Subject, catchError, map, observable, of, tap} from 'rxjs'
 import { ResponseDto } from '../interfaces/Response';
 
 @Injectable({
@@ -15,10 +15,17 @@ export class MenuCategoryService {
    
   }
 
-  get(pagNumber:number)
+  get(pagNumber:number,pageSize:number)
   {
     return this.httpClient
-    .get<ResponseDto<MenuCategory[]>>(`${this.BASE_URL}MenuCategory?Pagesize=10&PageNumber=${pagNumber}`)    
+    .get<ResponseDto<MenuCategory[]>>(`${this.BASE_URL}MenuCategory?Pagesize=${pageSize}&PageNumber=${pagNumber}`)    
+    
+  }
+
+  getCount()
+  {
+    return this.httpClient
+    .get<ResponseDto<number>>(`${this.BASE_URL}MenuCategory/count`)    
     
   }
 
@@ -27,12 +34,18 @@ export class MenuCategoryService {
     const message= this.httpClient.post<string>(`${this.BASE_URL}MenuCategory`,menuCategory);  
     return message;    
   }
-
-  Search(SearchText:string)
-  {
+  
+  Search(SearchText: string) {
     return this.httpClient.get<ResponseDto<MenuCategory[]>>(`${this.BASE_URL}MenuCategory/${SearchText}`).pipe(
-      catchError((error) => of(error))
-    );    
+      map(reponse=>reponse.Data)
+    )
+  }
+
+  getById(Id:number)
+  {
+    return this.httpClient
+    .get<ResponseDto<MenuCategory>>(`${this.BASE_URL}MenuCategory/${Id}`)    
+    
   }
 
   

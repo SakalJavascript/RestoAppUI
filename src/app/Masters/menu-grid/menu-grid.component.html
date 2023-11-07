@@ -1,0 +1,21 @@
+<div class="p-3">
+    <div>
+        <a routerLink="/masters/menu-form" class="btn btn-primary float-end">Add New</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let menu of $menu | async">
+                <td>{{menu.MenuName}}</td>
+                <td>{{menu.CatName}}</td>
+                <td>{{menu.Price  | currency:'₹'}}</td>
+                <td>{{menu.Description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

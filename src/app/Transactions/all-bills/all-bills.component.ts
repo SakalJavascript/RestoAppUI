@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+
 import { OrderService } from 'src/app/Services/order.service';
 
 @Component({
@@ -7,54 +7,43 @@ import { OrderService } from 'src/app/Services/order.service';
   templateUrl: './all-bills.component.html',
   styleUrls: ['./all-bills.component.css']
 })
-export class AllBillsComponent {
+export class AllBillsComponent implements OnInit {
 
-  constructor(private orderService:OrderService,private router:Router,private activatedRoute:ActivatedRoute) { }
-  
-  numbers:number[]=Array.from({length:10},(_,index)=>index+1);
-   orders: any
-   $total=this.orderService.getAllOrderCount();
-   pegiA=1;
-   pegiB=2;
-   pegiC=3;
-   pegiMax=0;
-   pageSize=10;
-   noOfPages=3
-  
+  @Input()
+  pageIndex=1
+  @Input()
+  pageSize=10
+  constructor(private orderService:OrderService) { }
+  $orders=this.orderService.getAllOrder(this.pageIndex,this.pageSize);
+  $total=this.orderService.getAllOrderCount();
+  ngOnInit(): void {
+  } 
 
+  pageChange(event:{pageIndex:number,pageSize:number})
+  {  
+    this.$orders= this.orderService.getAllOrder(event.pageIndex,event.pageSize);
+  }
 
-   Math(num:number)
-   {
-     return Math.ceil(num)
-   } 
-  PegiNext()
-  {
-    this.$total.subscribe((total)=>{   
-      
-      if(Math.ceil(total/this.pageSize)>this.pegiC)
-      {       
-          this.pegiA++;
-          this.pegiB++;
-          this.pegiC++;
-  
-      }
-    })
+  expandedRowIndices: number[] = [];
+
+  toggleDetails(index: number) {
    
-  }
-  PegiPrev()
-  {
-    if(this.pegiA>1)
-    {       
-        this.pegiA--;
-        this.pegiB--;
-        this.pegiC--;
-
+    if (this.expandedRowIndices.includes(index)) {
+      // Row is expanded, so collapse it
+      this.expandedRowIndices = this.expandedRowIndices.filter(i => i !== index);
+    } else {
+      // Row is collapsed, so expand it
+      this.expandedRowIndices.push(index);
     }
-
   }
 
-  PegiReset()
-  {    
-    this.router.navigate(['/transaction/all-bill', 1, this.pageSize]);
+  isRowExpanded(index: number) {    
+    return this.expandedRowIndices.includes(index);
   }
+
+  SaveModal()
+  {
+    
+  }
+  
 }

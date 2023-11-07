@@ -1,0 +1,50 @@
+<div class="pe-3 ps-4 pt-2">
+    <div  *ngIf="IsSearch">
+      <div class="input-group mt-2 float-end">
+        <input [(ngModel)]="searchText" type="search" class="form-control" placeholder="Search..." aria-label="Search.." (input)="Search()" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">   <i class="fas fa-search"></i></button>
+      </div>
+    </div>  
+  </div>
+    <div class="pb-3 pe-3 ps-4">
+        <ng-content></ng-content>
+      <div class="row" *ngIf="total>=10">
+        <div class="col-md-6 mt-1">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination" >
+              <li class="page-item">
+                <a class="page-link" (click)="PegiPrev()" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item">              
+                <a class="page-link" [ngClass]="{'active':pegiA===pageIndex}" (click)="SetPage(pegiA,pageSize)" >{{pegiA}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{'active':pegiB===pageIndex}" *ngIf="Math(total/pageSize)>=2" >
+                <a class="page-link" (click)="SetPage(pegiB,pageSize)" >{{pegiB}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{'active':pegiC===pageIndex}" *ngIf="Math(total/pageSize)>=3">
+                 <a class="page-link" (click)="SetPage(pegiC,pageSize)" >{{pegiC}}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="PegiNext()" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2">
+          <div class="d-flex">
+           <span class="mt-2">Page Size:</span>
+            <select [(ngModel)]="pageSize" style="width: 40%;" (change)="PegiReset()" class="form-control ms-1">
+                <option  *ngFor="let number of numbers" [value]="number*10" >{{number*10}}</option>              
+            </select>
+          </div>
+        </div>
+      </div>   
+    </div>
+    
