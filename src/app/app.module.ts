@@ -22,8 +22,12 @@ import { MatFormFieldModule } from '@angular/material/form-field'; // Import thi
 import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
 import { CommonModule, DatePipe } from '@angular/common';
 import { MenuFormComponent } from './Masters/menu-form/menu-form.component';
-import { AllBillsPageComponent } from './Transactions/all-bills/all-bills-page/all-bills-page.component';
 import { ModalComponent } from './Common/modal/modal.component';
+import { MenuGridComponent } from './Masters/menu-grid/menu-grid.component';
+import { PaginationComponent } from './Common/pagination/pagination.component';
+import { HeaderComponent } from './Common/header/header.component';
+import { LoginComponent } from './Login/login/login.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -39,10 +43,10 @@ import { ModalComponent } from './Common/modal/modal.component';
     TableBillingComponent,
     KitchenOrderComponent,
     MainDashboardComponent,
-    MenuFormComponent,
-    AllBillsPageComponent,
+    MenuFormComponent,    
     ModalComponent,
-       
+    MenuGridComponent,    
+    PaginationComponent, HeaderComponent, LoginComponent, HomePageComponent,   
     
   ],
   imports: [

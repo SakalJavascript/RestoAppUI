@@ -10,4 +10,5 @@ export interface Menu {
     UpdatedBy: number;
     IsDeleted: boolean | null;
     Qantity:number; 
+    CatName:string;
 }

@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuCategoryService } from 'src/app/Services/menu-category.service';
 import {MenuCategory} from 'src/app/interfaces/MenuCategory'
+import { ResponseDto } from 'src/app/interfaces/Response';
 
 @Component({
   selector: 'app-menu-category-form',
@@ -18,16 +20,22 @@ export class MenuCategoryFormComponent implements OnInit {
     IsDeleted:new FormControl(false)
   })
   
-  @Output()
-  submit= new EventEmitter();
-  menuCategories: MenuCategory[]=[];
+
   IsErrors=false
   Errors:{ [key: number]: string; } | undefined;
 
-  constructor(private menuCategoryService:MenuCategoryService) { }
+  constructor(private menuCategoryService:MenuCategoryService,
+              private router:Router,
+              private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.onLoad()
+   
+    const Id=this.activatedRoute.snapshot.params["id"];
+    this.menuCategoryService.getById(Id).subscribe(
+      (response)=>{
+        this.form.patchValue(response.Data!)
+      }
+    )
   }
 
   Submit()
@@ -36,35 +44,16 @@ export class MenuCategoryFormComponent implements OnInit {
     this.menuCategoryService.add(menuCat).subscribe(
     {
       next:()=>{      
-      this.onLoad();
+     
       this.form.reset();
+      this.cancel()
     },
     error:(error)=>{         
       this.IsErrors=true
     }})
   }
 
-  onLoad()
-  {   
-    this.menuCategoryService.get(1).subscribe(      
-      response=>
-      {
-        if(response.IsSuccess)
-          this.menuCategories=response.Data
-        else
-        {
-          this.IsErrors=true
-          this.Errors=response.Errors;
-        }
-          
-      },(error)=>{
-        this.IsErrors=true
-        this.Errors=error.error.Errors;
-      }
-
-    );
-  }
-  
+ 
   edit(menuCategory:MenuCategory)
   {
     this.form.patchValue(menuCategory)
@@ -82,7 +71,11 @@ export class MenuCategoryFormComponent implements OnInit {
     this.IsErrors=event.IsErrors
     this.Errors=event.Errors;
   }
- 
+
+  cancel()
+  {
+     this.router.navigate(['/home-page','masters','menu-category']);
+  }
   
 
 }

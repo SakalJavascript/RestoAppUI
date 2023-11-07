@@ -6,8 +6,8 @@ export enum ValidationType {
 
 export class ResponseDto<T> {
     IsSuccess: boolean;
-    Data: T;
-    Errors:{ [key: number]: string};
+    Data?: T;
+    Errors?:{ [key: number]: string};
 
     constructor() {
         this.IsSuccess = false;

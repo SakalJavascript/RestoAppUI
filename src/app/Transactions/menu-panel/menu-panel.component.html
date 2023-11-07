@@ -1,13 +1,13 @@
 <div *ngIf="TableId && TableId!==0" class="p-2 row">
     <div class="col-md-2">
-        <a  class="link" [routerLink]="['/tables']" > << Back</a>
+        <a  class="link" [routerLink]="['/home-page']" > << Back</a>
     </div>
     <div class="col-md-7">
         
     </div>
     <div class="col-md-3">
         <b >Table:</b> {{TableName}}  
-        <a class="btn btn-sm btn-light me-2" [routerLink]="['/tables','change-table',TableId,currentOrderId]" >Change Table</a>
+        <a class="btn btn-sm btn-light me-2" [routerLink]="['/home-page','tables','change-table',TableId,currentOrderId]" >Change Table</a>
     </div>
     
   

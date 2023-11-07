@@ -1,3 +1,4 @@
+<app-header>Menu Category Master</app-header>
 <div class="p-3">
 <form [formGroup]="form">
     <div class="mb-3">
@@ -9,18 +10,20 @@
       <label for="description" class="form-label">Description</label>
       <textarea class="form-control" id="description" formControlName="Description" name="Description"></textarea>
     </div>
-    <button type="submit" [disabled]="form.invalid" class="btn" [ngClass]="{'btn-primary':form.get('ID')?.value!==null,'btn-success':form.get('ID')?.value==null}"  (click)="Submit()" >
+    <button type="submit" [disabled]="form.invalid" class="btn  btn-sm" [ngClass]="{'btn-primary':form.get('ID')?.value!==null,'btn-success':form.get('ID')?.value==null}"  (click)="Submit()" >
       {{form.get('ID')?.value!==null?'Update':'Save'}}
     </button>
 
-    <button  class="btn btn-default" (click)="close()" >
+    <button  class="btn btn-default btn-sm ms-2" (click)="close()" >
       Reset
+    </button>
+    <button  class="btn btn-danger  btn-sm ms-2" (click)="cancel()" >
+      Cancel
     </button>
     <div *ngIf="IsErrors">
       <app-show-error-message [Errors]="Errors"></app-show-error-message>
       <button class="btn btn-close float-end" (click)="close()"></button>
-    </div>
-    <app-menu-category-grid (SetError)="SetError($event)" [menuCategories]="menuCategories"  (onEdit)="edit($event)" (onDelete)="onLoad()" ></app-menu-category-grid>
+    </div>    
   </form>
 </div>
   

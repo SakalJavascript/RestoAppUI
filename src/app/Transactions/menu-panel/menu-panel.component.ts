@@ -29,8 +29,8 @@ export class MenuPanelComponent implements OnInit {
   this.TableId=this.activatedRoute.snapshot.params["tableId"]??0
   this.TableName=this.activatedRoute.snapshot.params["TableName"]
  this.currentOrderId= this.activatedRoute.snapshot.params["orderId"]??0
-   this.menuCatSerive.get(1).subscribe(response=>{
-      this.menuCatList=response.Data;
+   this.menuCatSerive.get(1,10).subscribe(response=>{
+      this.menuCatList=response.Data!;
    }) 
   }
 
@@ -84,7 +84,7 @@ export class MenuPanelComponent implements OnInit {
     this.menuSevice.SaveOrder(order).subscribe((data)=>
       {
         this.Reset();                
-        this.router.navigate(["print",this.TableId!=0? "kitchen-order": "final-bill",data]);   
+        this.router.navigate(["/home-page/print",this.TableId!=0? "kitchen-order": "final-bill",data]);   
         
       }
       );

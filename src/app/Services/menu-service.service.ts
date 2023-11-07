@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Menu } from '../interfaces/Menu';
-import { KitchenOrderDetail } from '../interfaces/KitchenOrderDetail';
 import { Order } from '../interfaces/Order';
 
 @Injectable({
@@ -28,6 +27,11 @@ export class MenuService {
  Save( menu:Menu)
  {  
   return this.httpClient.post<string>(`${this.BASE_URL}Menu`, menu);
+ }
+
+ getMenu(pageIndex:number,pageSize:number)
+ {
+   return this.httpClient.get<Menu[]>(`${this.BASE_URL}Menu/${pageIndex}/${pageSize}`);
  }
 
 }

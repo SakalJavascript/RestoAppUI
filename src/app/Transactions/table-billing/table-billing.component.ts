@@ -68,20 +68,13 @@ export class TableBillingComponent implements OnInit {
     {
       console.log(this.tableIds)
       this.orderService.SaveTableBilling(this.tableIds).subscribe(data=>{       
-        this.router.navigate(["print","final-bill",data]);
+        this.router.navigate(["/home-page","print","final-bill",data]);
       
       })
 
       
 
-      //  this.printService.getPdfFile().subscribe((data)=>{
-      //   const blob = new Blob([data], { type: 'application/pdf' });
-      // this.pdfData = URL.createObjectURL(blob);
-
-      // // Open a new window to print the PDF.
-      // const printWindow = window.open(this.pdfData);
-      //  printWindow?.print();
-      //  })
+   
     }
 
 }

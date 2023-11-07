@@ -31,7 +31,7 @@ export class TableGridComponent implements OnInit {
     if(this.tableId>0)
       this.ChangeTable(this.tableId,tableId,this.currentOrderId);
     else
-      this.router.navigate(['/transaction','menu-panel',tableId,Description,CurrentOrderId])
+      this.router.navigate(['home-page','transaction','menu-panel',tableId,Description,CurrentOrderId])
   }
 
   ChangeTable(fromTableId:number,toTableId:number,CurrentOrderId:number)

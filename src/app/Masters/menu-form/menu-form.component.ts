@@ -13,7 +13,7 @@ export class MenuFormComponent implements OnInit {
   imageUrl: any;
   constructor(private MenuCategoryService:MenuCategoryService,
               private menuService:MenuService) { }
-  $menuCatageries=this.MenuCategoryService.get(1)
+  $menuCatageries=this.MenuCategoryService.get(1,10)
 
   form:FormGroup= new FormGroup({
     ID:new FormControl(0),
