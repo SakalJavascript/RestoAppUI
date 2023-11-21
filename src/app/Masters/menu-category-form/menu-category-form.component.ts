@@ -2,8 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuCategoryService } from 'src/app/Services/menu-category.service';
-import {MenuCategory} from 'src/app/interfaces/MenuCategory'
-import { ResponseDto } from 'src/app/interfaces/Response';
+import {MenuCategory} from 'src/app/interfaces/MenuCategory';
 
 @Component({
   selector: 'app-menu-category-form',
