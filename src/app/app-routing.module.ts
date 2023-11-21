@@ -13,6 +13,7 @@ import { MenuCategoryGridComponent } from './Masters/menu-category-grid/menu-cat
 import { MenuCategoryFormComponent } from './Masters/menu-category-form/menu-category-form.component';
 import { LoginComponent } from './Login/login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AuthGuard } from './Gaurds/auth.guard';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {   
       path:'home-page',
       component:HomePageComponent,
+      canActivate:[AuthGuard],
       children:[
                 { path:'' ,component: TableGridComponent },
                 { path:'masters/menu-category' ,component: MenuCategoryGridComponent },

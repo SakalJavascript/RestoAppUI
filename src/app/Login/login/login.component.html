@@ -1,13 +1,36 @@
 <div class="login-wrapper">
     <div class="login-form">
       <div class="login-logo">
-        <img src="/assets/logo-transparent-png.png" alt="Logo">
-       
+        <img src="/assets/logo-transparent-png.png" alt="Logo">       
       </div>
-      <form action="/login" method="post">
-        <input type="email" name="email" class="form-control login-input" placeholder="Email Address">
-        <input type="password" name="password" class="form-control login-input" placeholder="Password">
-        <button type="submit" class="btn btn-primary login-button">Login</button>
+      <form [formGroup]="form">
+        <input formControlName="username" type="email" name="email" class="form-control login-input" placeholder="User Name">       
+        <span *ngIf="form.get('username')?.touched && form.get('username')?.invalid" class="mb-1 text-danger" >Please Enter Username </span>     
+
+        <div class="input-group mb-3">
+          <input [type]="IsShowPass?'text':'password'" type="password" formControlName="password" class="form-control" id="password" name="password" placeholder="Enter your password" aria-describedby="passwordToggle">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="IsShowPass=!IsShowPass" type="button" id="passwordToggle">
+              <i class="far fa-eye"></i> 
+            </button>
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">
+            Password is required.
+          </div>
+          <div  class="text-danger" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('minlength')">
+            Password must be at least 8 characters long.
+          </div>
+          <div  class="text-danger" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('invalidPassword')">
+            Password must contain at least one lowercase letter, one uppercase letter, and one special character.
+          </div>
+        <button  class="btn btn-primary login-button" (click)="Login()" >Login</button>
+
+        
       </form>
+      <h2 *ngIf="error" class="text-danger">
+        {{error}}
+      </h2>    
     </div>
+
   </div>

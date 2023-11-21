@@ -6,7 +6,7 @@ import { TableGridComponent } from './Transactions/table-grid/table-grid.compone
 import { MenuCategoryFormComponent } from './Masters/menu-category-form/menu-category-form.component';
 import { MenuCategoryGridComponent } from './Masters/menu-category-grid/menu-category-grid.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MenuPanelComponent } from './transactions/menu-panel/menu-panel.component';
 import { FinalBillComponent } from './prints/final-bill/final-bill.component';
@@ -28,6 +28,7 @@ import { PaginationComponent } from './Common/pagination/pagination.component';
 import { HeaderComponent } from './Common/header/header.component';
 import { LoginComponent } from './Login/login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AuthInterceptor } from './Services/auth-interceptor.service';
 
 
 @NgModule({
@@ -64,7 +65,15 @@ import { HomePageComponent } from './home-page/home-page.component';
     CommonModule,
     
   ],
-  providers: [   DatePipe
+  providers: [   DatePipe,{
+    provide: HTTP_INTERCEPTORS,
+    useFactory: (authInterceptor: AuthInterceptor) => {
+      return authInterceptor;
+    },
+    deps: [AuthInterceptor],
+    multi: true,
+  },
+  AuthInterceptor,
   ],
   bootstrap: [AppComponent]
 })

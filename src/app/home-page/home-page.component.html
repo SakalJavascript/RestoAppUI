@@ -35,25 +35,23 @@
             <div class="collapse" id="dashboard-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a  routerLink="/home-page/dashboard/main-dashboard" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Datewise</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Annually</a></li>
+              
               </ul>
             </div>
           </li>
-          <li class="mb-1">
+          <!-- <li class="mb-1">
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
               Orders
             </button>
             <div class="collapse" id="orders-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
+                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
               </ul>
             </div>
-          </li>
+          </li>  -->
           <li class="border-top my-3"></li>
           <li class="mb-1">
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
@@ -68,7 +66,7 @@
             </div>
           </li>
         </ul>  
-       
+        <button  class="btn btn-danger" (click)="Logout()"><i class="fa fa-sign-out" aria-hidden="true"> </i> logout</button>
     </div>    
     <div id="content">
       <router-outlet></router-outlet>
