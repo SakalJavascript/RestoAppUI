@@ -1,0 +1,17 @@
+<li class="mb-1">  
+    <button *ngIf="childrens?.length!=0" (click)="isShow=!isShow" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" aria-expanded="true">
+           <b> {{parent?.FormName}} </b>
+    </button>
+     <span  *ngIf="childrens?.length==0">
+        <a [routerLink]="parent?.FormURL" class="link-body-emphasis d-inline-flex text-decoration-none rounded">{{parent?.FormName}}</a>
+     </span>   
+    <div *ngIf="childrens?.length!=0"  class="collapse ms-2" [ngClass]="isShow?'show':'hide'" [id]="parentId">   
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">    
+            <li  *ngFor="let child of childrens">                   
+                    <app-side-bar [formData]="formData" [parentId]="child.FormID" ></app-side-bar>
+            </li>
+        </ul>
+    </div>
+</li>    
+
+

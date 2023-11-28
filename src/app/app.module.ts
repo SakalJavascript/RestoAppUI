@@ -29,6 +29,7 @@ import { HeaderComponent } from './Common/header/header.component';
 import { LoginComponent } from './Login/login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AuthInterceptor } from './Services/auth-interceptor.service';
+import { SideBarComponent } from './Common/side-bar/side-bar.component';
 
 
 @NgModule({
@@ -47,7 +48,7 @@ import { AuthInterceptor } from './Services/auth-interceptor.service';
     MenuFormComponent,    
     ModalComponent,
     MenuGridComponent,    
-    PaginationComponent, HeaderComponent, LoginComponent, HomePageComponent,   
+    PaginationComponent, HeaderComponent, LoginComponent, HomePageComponent, SideBarComponent,   
     
   ],
   imports: [

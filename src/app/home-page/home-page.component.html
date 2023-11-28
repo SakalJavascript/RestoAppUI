@@ -11,63 +11,16 @@
   <body>   
     <div id="sidebarCollapse"  (click)="ShowSidebar=!ShowSidebar">      	
        ☰
-     </div>
-    <div id="sidebar" [ngClass]="{'active':ShowSidebar}" class="flex-shrink-0 p-3" > 
+     </div>     
+    
+    <div *ngIf="($formData | async) as data" id="sidebar" [ngClass]="{'active':true}" class="flex-shrink-0 p-3" > 
       <img id="logo" src="/assets/logo-transparent-png.png" style="margin-left: 20px;"> 
-        <ul class="list-unstyled ps-0">         
-          <li class="mb-1 ">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-              Billing
-            </button>
-            <div class="collapse show" id="home-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">                
-                <li><a routerLink="/home-page" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Tables</a></li>
-                <li><a routerLink="/home-page/transaction/menu-panel" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Fast Billing</a></li>
-                <li><a  routerLink="/home-page/transaction/table-billing" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Table Billing</a></li>
-                <li><a  routerLink="/home-page/transaction/all-bill" class="link-body-emphasis d-inline-flex text-decoration-none rounded">All Bills</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-              Dashboard
-            </button>
-            <div class="collapse" id="dashboard-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a  routerLink="/home-page/dashboard/main-dashboard" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Datewise</a></li>
-              
-              </ul>
-            </div>
-          </li>
-          <!-- <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-              Orders
-            </button>
-            <div class="collapse" id="orders-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Returned</a></li>
-              </ul>
-            </div>
-          </li>  -->
-          <li class="border-top my-3"></li>
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-              Masters
-            </button>
-            <div class="collapse" id="account-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a routerLink="/home-page/masters/menu-category" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Menu Category</a></li>
-                <li><a  routerLink="/home-page/masters/menu-grid" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Menu</a></li>
-                
-              </ul>
-            </div>
-          </li>
-        </ul>  
-        <button  class="btn btn-danger" (click)="Logout()"><i class="fa fa-sign-out" aria-hidden="true"> </i> logout</button>
-    </div>    
+      <ul class="list-unstyled ps-0"> 
+           <app-side-bar [formData]="data" [parentId]="0">
+           </app-side-bar>   
+      </ul>  
+      <button  class="btn btn-danger" (click)="Logout()"><i class="fa fa-sign-out" aria-hidden="true"> </i> logout</button>
+    </div>
     <div id="content">
       <router-outlet></router-outlet>
     </div>

@@ -1,0 +1,57 @@
+#sidebar {
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  left: -250px;
+  top: 0;
+  background-color: #f8f9fa;
+  padding-top: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000; /* Added z-index to make the sidebar appear on top */
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+#sidebar a {
+  padding: 5px;  
+  font-size: 14px;
+  color: #343a40;
+  display: block;
+}
+
+#sidebar a:hover {
+ text-decoration: underline;
+}
+
+ #logo {
+  width: 200px;
+  height: 50px; 
+}
+
+#sidebarCollapse {  
+  cursor: pointer;
+  position: fixed;
+  background-color: gainsboro;
+  padding: 0.7px 4px;
+  border-radius: 2px;
+  border: 1px solid black;
+  left: 5px;
+  top: 5px;  
+  z-index: 1001; /* Ensure the sidebar toggle button appears above the sidebar */
+}
+#sidebarCollapse:hover
+{
+  background-color: gray;  
+} 
+
+#content {
+  margin-left: 0px; /* Adjust content margin to accommodate the sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+#sidebar.active + #content {
+  margin-left: 250px; /* When the sidebar is active, move the content back to the original position */
+}
+
