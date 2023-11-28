@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormService } from '../Services/form.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,8 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  $formData=this.formService.getALlForm();
+ 
+  constructor(private router:Router,private formService:FormService) { }
   title = 'RestoAppUI';
   ShowSidebar=true;
   ngOnInit(): void {
